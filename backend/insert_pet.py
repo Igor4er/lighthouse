@@ -1,25 +1,13 @@
 import json
 from database import PetProject
 
-example_data = [{
-        "name": "Веб-розробка на Flask або Django",
-        "discription": "Чудовою ідеєю, щоб здобути нові знання, які ще й можна застосувати на практиці, є створення веб-застосунку на фреймворках Python, в останні роки найпопулярнішими є Flask i Django. З ними ви можете зробити багато цікавого: від особистого блогу до соцмережі чи маркет-плейсу."
-    },
-    {
-        "name": "Конвертер валют",
-        "discription": " Легка програма, завдяки якій ви освоїтесь в роботі з API. Ви можете розробити як консольну версію, так і трохи покреативити з створенням графічного дизайну"
-    }, 
-    {
-        "name": "Телеграм бот",
-        "discription": "Телеграм-боти дедалі більше входять в наше життя, ними починають цікавитись навіть великі компанії як Lifecell, Львівобленерго, Yakaboo. З телеграм ботами ви можете як спростити собі життя, так і урізноманітнити його цікавими рішеннями та забавками. Для розробки зараз найчастіше використовують Aiogram i Telebot. Телебот простіший, але сучасним стандартом є саме Aiogram, тому ми рекомендуємо почати з нього"
-    },
-    {
-        "name": "ToDo list",
-        "discription": "Або ж іншими словами список справ. Це стандартна програма для багатьох початківців. Під час її виконання ви ознайомитесь з файловою системою, навчитесь зберігати, обробляти та видаляти інформацію, яку вводить користувач"
-    }]
 
 with open("backend/pet.json", encoding="utf-8") as file:
     pets_data = json.load(file)
     for data in pets_data.keys():
         for pet in pets_data[data]:
-            row, created = PetProject.get_or_create(name=pet["name"], discription=pet["discription"], speciality_id = int(data))
+            row, created = PetProject.get_or_create(
+                name=pet["name"],
+                description=pet["description"],
+                speciality_id=int(data),
+            )
