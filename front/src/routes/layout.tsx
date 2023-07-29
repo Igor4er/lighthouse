@@ -3,7 +3,7 @@ import { routeAction$, routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { MeiliSearch } from 'meilisearch'
 
-// import Header from "~/components/starter/header/header";
+import Header from "~/components/Header";
 // import Footer from "~/components/starter/footer/footer";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -40,7 +40,7 @@ export const useSearch = routeAction$(async (data) => {
 export default component$(() => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main>
         <Slot />
       </main>
