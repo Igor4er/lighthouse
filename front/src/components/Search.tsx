@@ -50,7 +50,7 @@ export default component$(() => {
         <div class="dropdown dropdown-open  ">
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-[#222a34] rounded-box w-[560px]">
                 {action.value.data?.map((x) => (
-                    <li key={x.name}> <Link class="text-lg pl-[31px] font-medium">{x.name}</Link> </li>  
+                    <li key={x.name}> <Link href={`s/${x.id}`} class="text-lg pl-[31px] font-medium">{x.name}</Link> </li>  
                 )) }
             </ul>
         </div>
