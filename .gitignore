@@ -4,6 +4,7 @@
 .vscode/
 #Cache folder
 .alcache/
+__pacache_/
 #Symbols folder
 .alpackages/
 #Snapshots folder
@@ -20,3 +21,6 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+#Database
+db.sqlite3
+db.sqlite3-journal
