@@ -25,12 +25,15 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 const client = new MeiliSearch({
   host: 'http://localhost:7700',
-  apiKey: '0a600f4dfe4e3047406af2e612dbfd7fcdf105c9fded8d0bf8ec1a7870bf55f6',
+  apiKey: 'f09fbf1f1f30b0bb34f2b2d1453bc2c3aee3e7df4452ab69b17ba5f7eb61e62f',
 });
 
 export const useSearch = routeAction$(async (data) => {
   if (typeof data.query === 'string') {
-      return client.index('specs').search(data.query);
+      console.log(data);
+      const hits = await client.index('specs').search(data.query, {'limit': 5}).then((h) => {return h});
+      console.log({ok: true, data: hits});
+      return {ok: true, data: hits.hits}
   }
 });
 

@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@meilisearch/instant-meilisearch':
+    specifier: ^0.13.3
+    version: 0.13.3
   meilisearch:
     specifier: ^0.33.0
     version: 0.33.0
@@ -408,6 +411,14 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@meilisearch/instant-meilisearch@0.13.3:
+    resolution: {integrity: sha512-GzJrma064pA9b/5Tdv/5uX5XGPx+uBgBOe2VGbOJcG4VFfEwmSqYw5kJFl/vrpJ3pYw46xPeFLVUl4cHq1nNlA==}
+    dependencies:
+      meilisearch: 0.33.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
