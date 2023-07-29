@@ -16,6 +16,7 @@ export default component$(() => {
               <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             </span>
             <input type="text" placeholder="Введіть спеціальність або технологію" class="input input-bordered input-primary w-[560px] rounded-full pl-10" onInput$={async (e, t) => {
+
             action.submit({'query': t.value})
             }} />
         </div>
