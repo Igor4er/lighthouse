@@ -32,11 +32,3 @@ def get_db():
     finally:
         if not db.is_closed():
             db.close()
-
-try:
-        # specs = Speciality.select()
-        print([author for author in Speciality.select()])
-
-except Speciality.DoesNotExist:
-
-        print( "Sir, seems like we don't have no data. Would You like ask my developer to fetch some for you. Thank You, have a great time")
