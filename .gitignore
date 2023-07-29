@@ -21,6 +21,14 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+node_modules/
+meili/venv/*
+
+venv/
+.venv/
+env/
+.env
+*.env
 #Database
 db.sqlite3
 db.sqlite3-journal
