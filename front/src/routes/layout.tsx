@@ -32,7 +32,7 @@ export const useSearch = routeAction$(async (data) => {
   if (typeof data.query === 'string') {
       console.log(data);
       const hits = await client.index('specs').search(data.query, {'limit': 5}).then((h) => {return h});
-      console.log({ok: true, data: hits});
+      // console.log({ok: true, data: hits});
       return {ok: true, data: hits.hits}
   }
 });
