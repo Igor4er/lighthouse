@@ -9,7 +9,7 @@ export default component$(() => {
 
   return (
     <>
-      <div class="flex justify-center align-middle mt-auto relative top-[40vh]"><Search /></div>
+      <div class="flex justify-center align-middle mt-auto relative top-[18vh]"><Search /></div>
     </>
   );
 });
