@@ -1,7 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import { useLocation, routeLoader$ } from '@builder.io/qwik-city';
 
-
+const useSpecDetails = routeLoader$(async (requestEvent) => {
+    
+});
 
  
 export default component$(() => {
