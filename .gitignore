@@ -35,6 +35,9 @@ db.sqlite3
 db.sqlite3-journal
 node_modules/
 meili/venv/*
+meili/data.ms/*
+meili/data.ms/
+meili/meilisearch
 *.env
 
 __pycache__/
