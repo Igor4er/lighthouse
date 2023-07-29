@@ -1,1 +1,2 @@
-# specReq
+# Lighthouse
+## Find your tech stack
