@@ -1,7 +1,13 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useSignal, type Signal } from "@builder.io/qwik";
 import { routeAction$, routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { MeiliSearch } from 'meilisearch'
+
+import {
+  useContext,
+  useContextProvider,
+  createContextId,
+} from '@builder.io/qwik';
 
 import Header from "~/components/Header";
 // import Footer from "~/components/starter/footer/footer";
@@ -37,7 +43,12 @@ export const useSearch = routeAction$(async (data) => {
   }
 });
 
+export const userLoggedInContext =  createContextId<Signal<boolean>>("ulg");
+
 export default component$(() => {
+  const userLoggedIn = useSignal(false);
+  useContextProvider(userLoggedInContext, userLoggedIn)
+
   return (
     <>
       <Header />

@@ -1,11 +1,13 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { component$, useSignal, useContext } from "@builder.io/qwik";
 import { Form, useNavigate } from "@builder.io/qwik-city";
 //@ts-ignore
 import Cookies from "js-cookie";
+import { userLoggedInContext } from "~/routes/layout";
 
 export default component$(() => {
     const email = useSignal("");
     const passw = useSignal("");
+    const userLoggedIn = useContext(userLoggedInContext);
     const incorrect = useSignal(false);
     const nav = useNavigate();
     return (
@@ -19,6 +21,7 @@ export default component$(() => {
                     <button type="submit" class="w-full max-w-sm m-auto btn btn-primary" onClick$={() => {
                         if (email.value.length > 8 && passw.value.length > 8 && email.value.includes("@")) {
                             Cookies.set("userLoggedIn", true);
+                            userLoggedIn.value = true;
                             nav("/");
                         }
                         else {

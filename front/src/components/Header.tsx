@@ -1,13 +1,16 @@
-import { component$, useComputed$, useVisibleTask$ } from "@builder.io/qwik";
-import { Link, useNavigate } from "@builder.io/qwik-city";
+import { component$, useSignal, useVisibleTask$, useContext } from "@builder.io/qwik";
+import { Link, useNavigate, globalAction$ } from "@builder.io/qwik-city";
+import { userLoggedInContext } from "~/routes/layout";
 //@ts-ignore
 import Cookies from "js-cookie";
 
 export default component$(() => {
-    const userLoggedIn = useComputed$(() => {
-        
-    });
+
+    // const userLoggedIn = useSignal(false);
+    const userLoggedIn = useContext(userLoggedInContext);
     const nav = useNavigate();
+
+
 
     useVisibleTask$(() => {
         if (Cookies.get("userLoggedIn") === "true") {
