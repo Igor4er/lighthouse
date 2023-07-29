@@ -22,4 +22,9 @@ rad.json
 TestResults.xml
 node_modules/
 meili/venv/*
+
+venv/
+.venv/
+env/
+.env
 *.env
