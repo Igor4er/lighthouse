@@ -21,7 +21,6 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
-<<<<<<< HEAD
 node_modules/
 meili/venv/*
 
@@ -30,8 +29,6 @@ venv/
 env/
 .env
 *.env
-=======
 #Database
 db.sqlite3
 db.sqlite3-journal
->>>>>>> origin/backend
