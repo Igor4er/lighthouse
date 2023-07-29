@@ -20,7 +20,7 @@ def get_data():
     except Speciality.DoesNotExist:
         return "Sir, seems like we don't have no data. Would You like ask my developer to fetch some for you. Thank You, have a great time"
 
-    return {"Hello": "world"}
+    return {"Hello": "world!"}
 
 
 if __name__ == "__main__":
