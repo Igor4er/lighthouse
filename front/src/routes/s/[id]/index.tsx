@@ -16,11 +16,13 @@ const signal = useSpecDetails();
 const loc = useLocation();
   return (
     <>
-    <div class="text-2xl">Hello {loc.params.id}!</div>
-    <div class="text-xl">Hello {signal.value.specinfo.name}!</div>
+    <div class="text-5xl">PAGE :{loc.params.id}</div>
+    <div class="text-3xl">SPEC:</div>
+    <div class="text-2xl">{signal.value.specinfo.name}:</div>
             {signal.value.specinfo.reqs.map((x: string) => (
                 <div key={x}> <div class="text-lg pl-[31px] font-medium">{x}</div> </div>  
             )) }
+            <div class="text-3xl">PROJ:</div>
             {signal.value.specinfo.projects.map((x: any) => (
                 <div key={x.name}> <div class="text-lg pl-[31px] font-medium">{x.name} <span class="bg-base-300">{x.desc}</span></div> </div>  
             )) }
