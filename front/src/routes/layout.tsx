@@ -1,6 +1,7 @@
 import { component$, Slot } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { routeAction$, routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import { MeiliSearch } from 'meilisearch'
 
 // import Header from "~/components/starter/header/header";
 // import Footer from "~/components/starter/footer/footer";
@@ -20,6 +21,17 @@ export const useServerTimeLoader = routeLoader$(() => {
   return {
     date: new Date().toISOString(),
   };
+});
+
+const client = new MeiliSearch({
+  host: 'http://localhost:7700',
+  apiKey: '0a600f4dfe4e3047406af2e612dbfd7fcdf105c9fded8d0bf8ec1a7870bf55f6',
+});
+
+export const useSearch = routeAction$(async (data) => {
+  if (typeof data.query === 'string') {
+      return client.index('specs').search(data.query);
+  }
 });
 
 export default component$(() => {
