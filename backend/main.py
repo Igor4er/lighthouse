@@ -2,7 +2,7 @@ from fastapi import FastAPI, Depends
 import json
 from peewee import SqliteDatabase
 from playhouse.shortcuts import model_to_dict
-from database import get_db, Speciality, ReqToSpec, Requirement
+from database import get_db, Speciality, ReqToSpec, Requirement, PetProject
 import uvicorn
 
 app = FastAPI()
@@ -23,13 +23,14 @@ def get_data():
     return {"Hello": "world!"}
 
 @app.get(path="/spec/")
-def insert_spec(id:int):
+def get_spec(id:int):
     try:
         print(id)
         data = Speciality.get_by_id(id)
+        projects = PetProject.select().where(PetProject.speciality == id)
         reqs_to_spec = ReqToSpec.select().where(ReqToSpec.speciality == id)
         reqs = [Requirement.get(id=req.requirement_id) for req in reqs_to_spec]
-        return [{"id": data.id, "name": data.name, "transliterated": data.transliterated, "reqs": reqs}]
+        return [{"id": data.id, "name": data.name, "transliterated": data.transliterated, "project": projects,"reqs": reqs}]
 
     except Speciality.DoesNotExist:
         return "Sir, seems like we don't have no data. Would You like ask my developer to fetch some for you. Thank You, have a great time"
