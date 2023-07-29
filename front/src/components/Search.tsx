@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { useSearch } from "~/routes/layout";
 
 export default component$(() => {
@@ -15,10 +16,22 @@ export default component$(() => {
             action.submit({'query': t.value})
             }} />
         </div>
-        {action.value?.ok && action.value.data?.map((x) => (
-            <div class="text-xl mt-5" key={x.name}>{x.name}</div>
-        )) }
+        {/* {action.value?.ok && action.value.data?.map((x) => (
+            <li class="text-xl mt-5" key={x.name}>{x.name}</li>
+        )) } */}
+        {action.value?.ok &&
+        <div class="dropdown dropdown-open">
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-[#222a34] rounded-box w-[560px]">
+                {action.value.data?.map((x) => (
+                    <li key={x.name}> <Link class="text-lg pl-[31px] font-medium">{x.name}</Link> </li>  
+                )) }
+            </ul>
         </div>
+        }
+        </div>
+            
+        
+
         </>
     )
 })
