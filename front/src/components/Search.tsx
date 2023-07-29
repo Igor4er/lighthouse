@@ -21,9 +21,28 @@ export default component$(() => {
             }} />
         </div>
         <div class="buttons mt-5 flex justify-between fixed w-[560px]">
-            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100 mr-3">Про платформу</button>
-            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100">Як користуватися платформою</button>
+            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100 mr-3" onclick="my_modal_1.showModal()" >Про платформу</button>
+            <dialog id="my_modal_1" class="modal">
+                <form method="dialog" class="modal-box">
+                    <h3 class="font-bold text-lg">Про платформу</h3>
+                    <p class="py-4">Press ESC key or click the button below to close</p>
+                    <div class="modal-action">
+                    <button class="btn">Close</button>
+                    </div>
+                </form>
+                </dialog>
+            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100" onclick="my_modal_2.showModal()">Як користуватися платформою?</button>
+                <dialog id="my_modal_2" class="modal">
+                <form method="dialog" class="modal-box">
+                    <h3 class="font-bold text-lg">Як користуватися платформою?</h3>
+                    <p class="py-4">Press ESC key or click the button below to close</p>
+                    <div class="modal-action">
+                    <button class="btn">Close</button>
+                    </div>
+                </form>
+                </dialog>
         </div>
+        
         {/* {action.value?.ok && action.value.data?.map((x) => (
             <li class="text-xl mt-5" key={x.name}>{x.name}</li>
         )) } */}
