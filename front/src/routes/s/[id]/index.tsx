@@ -22,12 +22,12 @@ const signal = useSpecDetails();
     <div class="text-3xl">SPEC:</div> */}
     <div class="huge_blok flex justify-around ">
       <div class="left_blok w-2/5 rounded-2xl bg-[#222a34]  mt-8">
-        <div class="text-2xl text-white text-4xl text-center mt-8">{signal.value.specinfo.name}:</div>
+        <div class="text-white text-4xl text-center mt-8">{signal.value.specinfo.name}:</div>
         {signal.value.specinfo.reqs.map((x: any) => (
           <>
-          <div class="card w-96 bg-base-100 shadow-xl  m-auto mt-4">
+          <div class="card w-[90%] bg-neutral shadow-xl  m-auto mt-4">
             <div class="card-body" key={x.name}>
-                  <h2 class="card-title">{x.name}</h2>
+                  <h2 class="card-title text-accent-content">{x.name}</h2>
                   <p>{x.desc}</p>
             </div>
             </div>
@@ -36,19 +36,20 @@ const signal = useSpecDetails();
       </div>
       {userLoggedIn.value ?
       <>
-        <div class="right_blok w-2/5 rounded-2xl bg-[#222a34] mt-8">
-          <div class="card w-96 bg-[#F2C94C] text-primary-content m-auto">
+        <div class="right_blok w-2/5 rounded-2xl bg-[#222a34] mt-8 border-[3px]  border-warning/90 ">
+          <div class="text-white text-4xl text-center mt-8 ">Спробуйте такі пет проєкти:</div>
           {signal.value.specinfo.projects.map((x: any) => (
               <>
+              <div class="card w-[90%] bg-neutral m-auto mt-4 ">
                 <div class="card-body" key={x.name}>
-                <h2 class="card-title">{x.name}</h2>
+                <h2 class="card-title text-accent-content">{x.name}</h2>
                 <p>{x.desc}</p>
-                <div class="card-actions justify-end"></div>
+                </div>
                 </div>
               </>  
               )) }
 
-          </div>
+          
           </div>
       </>
       :

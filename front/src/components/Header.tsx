@@ -1,6 +1,7 @@
 import { component$, useSignal, useVisibleTask$, useContext } from "@builder.io/qwik";
 import { Link, useNavigate, globalAction$, useLocation } from "@builder.io/qwik-city";
 import { userLoggedInContext } from "~/routes/layout";
+import ImgLogo from "~/media/Logo.svg?jsx"
 //@ts-ignore
 import Cookies from "js-cookie";
 
@@ -32,9 +33,9 @@ export default component$(() => {
             }
 
             {loc.url.pathname != "/" ?
-            <Link href="/"><div>замість цього div вставити лого</div></Link>  // ЛОГо СЮДИ
+            <Link href="/"><ImgLogo class="h-[50px]"/></Link>  // ЛОГо СЮДИ
             :
-            <div class="hidden">.</div>
+            <div class="opacity-0">.</div>
             }
 
             {userLoggedIn.value ?
