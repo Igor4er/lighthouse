@@ -1,9 +1,15 @@
-import { component$, Slot } from "@builder.io/qwik";
+import { component$, Slot, useSignal, type Signal } from "@builder.io/qwik";
 import { routeAction$, routeLoader$ } from "@builder.io/qwik-city";
 import type { RequestHandler } from "@builder.io/qwik-city";
 import { MeiliSearch } from 'meilisearch'
 
-// import Header from "~/components/starter/header/header";
+import {
+  useContext,
+  useContextProvider,
+  createContextId,
+} from '@builder.io/qwik';
+
+import Header from "~/components/Header";
 // import Footer from "~/components/starter/footer/footer";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
@@ -25,7 +31,7 @@ export const useServerTimeLoader = routeLoader$(() => {
 
 const client = new MeiliSearch({
   host: 'http://localhost:7700',
-  apiKey: 'f75e1f9fcb68cb6fb0340d1f38c5470d3a6c9519fef1b318745d4be5d9499618',
+  apiKey: '756b04fa7fbf4bc06c42755456bb37bea8f8acfdc5c549986c25a5bbb1d1c1f0',
 });
 
 export const useSearch = routeAction$(async (data) => {
@@ -37,10 +43,15 @@ export const useSearch = routeAction$(async (data) => {
   }
 });
 
+export const userLoggedInContext =  createContextId<Signal<boolean>>("ulg");
+
 export default component$(() => {
+  const userLoggedIn = useSignal(false);
+  useContextProvider(userLoggedInContext, userLoggedIn)
+
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main>
         <Slot />
       </main>
