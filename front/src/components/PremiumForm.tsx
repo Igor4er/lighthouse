@@ -1,5 +1,5 @@
 import { component$, useSignal, useContext } from "@builder.io/qwik";
-import { Form, useNavigate } from "@builder.io/qwik-city";
+import { Form, useNavigate, useLocation } from "@builder.io/qwik-city";
 //@ts-ignore
 import Cookies from "js-cookie";
 import { userLoggedInContext } from "~/routes/layout";
@@ -10,6 +10,7 @@ export default component$(() => {
     const incorrect = useSignal(false);
     const userLoggedIn = useContext(userLoggedInContext);
     const nav = useNavigate();
+    const loc = useLocation();
     return (
         <>
         <div class="px-12 pb-12 pt-6 bg-base-200 rounded-xl flex flex-col justify-items-center">
@@ -22,7 +23,7 @@ export default component$(() => {
                         if (email.value.length > 8 && passw.value.length > 8 && email.value.includes("@")) {
                             Cookies.set("userLoggedIn", true);
                             userLoggedIn.value = true;
-                            nav("/");
+                            nav(loc.prevUrl?.pathname);
                         }
                         else {
                             incorrect.value = true;

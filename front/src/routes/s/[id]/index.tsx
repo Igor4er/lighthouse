@@ -1,5 +1,5 @@
 import { component$, useContext } from '@builder.io/qwik';
-import { useLocation, routeLoader$, Link } from '@builder.io/qwik-city';
+import { routeLoader$, Link } from '@builder.io/qwik-city';
 import { userLoggedInContext } from '~/routes/layout';
 
 export const useSpecDetails = routeLoader$(async (requestEvent) => {
@@ -15,7 +15,6 @@ export const useSpecDetails = routeLoader$(async (requestEvent) => {
 export default component$(() => {
 const userLoggedIn = useContext(userLoggedInContext);
 const signal = useSpecDetails();
-const loc = useLocation();
 
   return (
     <>
