@@ -24,12 +24,12 @@ const loc = useLocation();
     <div class="huge_blok flex justify-around ">
       <div class="left_blok w-2/5 rounded-2xl bg-[#222a34]  mt-8">
         <div class="text-2xl text-white text-4xl text-center mt-8">{signal.value.specinfo.name}:</div>
-        {signal.value.specinfo.reqs.map((x: string) => (
+        {signal.value.specinfo.reqs.map((x: any) => (
           <>
           <div class="card w-96 bg-base-100 shadow-xl  m-auto mt-4">
-            <div class="card-body">
-                  <h2 class="card-title">{x}</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
+            <div class="card-body" key={x.name}>
+                  <h2 class="card-title">{x.name}</h2>
+                  <p>{x.desc}</p>
             </div>
             </div>
           </>
