@@ -41,7 +41,7 @@ export default component$(() => {
             {userLoggedIn.value ?
             <>
                 <div>
-                    <div>Ви ввійшли як Pro користувач. <Link reload class="text-red-500/75 cursor-pointer underline ml-2" preventdefault: click onClick$={() => {
+                    <div><span class="text-warning">Pro режим</span>. <Link reload class="text-red-500/75 cursor-pointer underline ml-2" preventdefault: click onClick$={() => {
                         Cookies.remove('userLoggedIn');
                         userLoggedIn.value = false;
                         nav();

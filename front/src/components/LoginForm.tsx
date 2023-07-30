@@ -23,7 +23,12 @@ export default component$(() => {
                         if (email.value.length > 8 && passw.value.length > 8 && email.value.includes("@")) {
                             Cookies.set("userLoggedIn", true, {"max-age": "3600"});
                             userLoggedIn.value = true;
-                            nav(loc.prevUrl?.pathname);
+                            if (loc.prevUrl?.pathname == loc.url.pathname) {
+                                nav("/");
+                            }
+                            else {
+                                nav(loc.prevUrl?.pathname);
+                            }
                         }
                         else {
                             incorrect.value = true;
