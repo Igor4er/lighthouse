@@ -11,10 +11,12 @@ class Base(Model):
 class Speciality(Base):
     name = CharField()
     transliterated = CharField()
+    
 
 
 class Requirement(Base):
     name = CharField()
+    description = CharField(null=True)
 
 
 class ReqToSpec(Base):
