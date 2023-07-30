@@ -12,14 +12,14 @@ export default component$(() => {
 
 
 
-    useVisibleTask$(() => {
-        if (Cookies.get("userLoggedIn") === "true") {
-            userLoggedIn.value = true;
-        }
-        else {
-            userLoggedIn.value = false;
-        }
-    });
+    // useVisibleTask$(() => {
+    //     if (Cookies.get("userLoggedIn") === "true") {
+    //         userLoggedIn.value = true;
+    //     }
+    //     else {
+    //         userLoggedIn.value = false;
+    //     }
+    // });
 
     return (
         <>

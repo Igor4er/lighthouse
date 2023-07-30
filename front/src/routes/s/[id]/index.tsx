@@ -1,5 +1,6 @@
-import { FunctionComponent, JSXChildren, JSXNode, Signal, component$ } from '@builder.io/qwik';
+import { component$, useContext } from '@builder.io/qwik';
 import { useLocation, routeLoader$, Link } from '@builder.io/qwik-city';
+import { userLoggedInContext } from '~/routes/layout';
 
 export const useSpecDetails = routeLoader$(async (requestEvent) => {
     const fromAPI = await fetch(`http://127.0.0.1:8000/spec?id=${requestEvent.params.id}`).then((resp) => {
@@ -12,8 +13,10 @@ export const useSpecDetails = routeLoader$(async (requestEvent) => {
 
  
 export default component$(() => {
+const userLoggedIn = useContext(userLoggedInContext);
 const signal = useSpecDetails();
 const loc = useLocation();
+
   return (
     <>
     {/* <div class="text-5xl">PAGE :{loc.params.id}</div>
@@ -61,6 +64,12 @@ const loc = useLocation();
             {signal.value.specinfo.projects.map((x: any) => (
                 <div key={x.name}> <div class="text-lg pl-[31px] font-medium">{x.name} <span class="bg-base-300">{x.desc}</span></div> </div>  
             )) }
+            {userLoggedIn.value ?
+            <div>ПРЕМІУМ ВИДНО</div>
+            :
+            <div class="hidden">ПРЕМІУМ НЕ ВИДНО</div>
+            }
+
     </>
   )
 });

@@ -1,10 +1,12 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { useSearch } from "~/routes/layout";
 import ImgLogo from "~/media/Logo.svg?jsx"
 
 export default component$(() => {
     const action = useSearch();
+    const modal1_en = useSignal(false);
+    const modal2_en = useSignal(false);
 
     return (
         <>
@@ -21,7 +23,10 @@ export default component$(() => {
             }} />
         </div>
         <div class="buttons mt-5 flex justify-between fixed w-[560px]">
-            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100 mr-3" onclick="my_modal_1.showModal()" >Про платформу</button>
+            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100 mr-3" onClick$={() => {
+                modal1_en.value = !modal1_en.value;
+                }} >Про платформу</button>
+            <input type="checkbox" id="my_modal_1" class="modal-toggle" bind:checked={modal1_en} />
             <dialog id="my_modal_1" class="modal">
                 <form method="dialog" class="modal-box">
                     <h3 class="font-bold text-lg">Про платформу</h3>
@@ -34,11 +39,16 @@ export default component$(() => {
                     <p class="py-4 indent-5 pt-0 pb-3">До того ж на pro варіанті розміщена рекомендація інфоресурсів, на яких можна здобути або покращити необхідні знання. </p>
                         
                     <div class="modal-action">
-                    <button class="btn">Закрити</button>
+                    <button class="btn" onClick$={() => {
+                modal1_en.value = !modal1_en.value;
+                }}>Close</button>
                     </div>
                 </form>
                 </dialog>
-            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100" onclick="my_modal_2.showModal()">Як користуватися платформою?</button>
+            <button class="btn btn-outline btn-primary opacity-60 hover:opacity-100" onClick$={() => {
+                modal2_en.value = !modal2_en.value;
+                }}>Як користуватися платформою?</button>
+                <input type="checkbox" id="my_modal_1" class="modal-toggle" bind:checked={modal2_en} />
                 <dialog id="my_modal_2" class="modal">
                 <form method="dialog" class="modal-box">
                     <h3 class="font-bold text-lg">Як користуватися платформою?</h3>
@@ -50,7 +60,9 @@ export default component$(() => {
                         Скрін як це виглядає..... <br />
                         
                     <div class="modal-action">
-                    <button class="btn">Закрити</button>
+                    <button class="btn" onClick$={() => {
+                modal2_en.value = !modal2_en.value;
+                }}>Close</button>
                     </div>
                 </form>
                 </dialog>
