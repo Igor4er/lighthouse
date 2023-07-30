@@ -21,7 +21,7 @@ export default component$(() => {
                     <input type="password" placeholder="Пароль" class="input w-full max-w-sm m-auto" bind:value={passw} />
                     <button type="submit" class="w-full max-w-sm m-auto btn btn-primary" onClick$={() => {
                         if (email.value.length > 8 && passw.value.length > 8 && email.value.includes("@")) {
-                            Cookies.set("userLoggedIn", true, {"Max-age": 3600});
+                            Cookies.set("userLoggedIn", true, {"Max-age": "3600"});
                             userLoggedIn.value = true;
                             nav(loc.prevUrl?.pathname);
                         }
