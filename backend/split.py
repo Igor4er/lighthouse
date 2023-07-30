@@ -14,7 +14,6 @@ def split_data():
         lines = content.split(";")
         list_of_requirements = []
         for i in tqdm(range(0, len(lines) - 1)):
-            # db.connect()
             dictionary = {}
             separate_words = []
             requirements = []

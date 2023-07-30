@@ -32,13 +32,13 @@ def get_spec(id: int):
         data = Speciality.get_by_id(id)
         projects = PetProject.select().where(PetProject.speciality == id)
         reqs_to_spec = ReqToSpec.select().where(ReqToSpec.speciality == id)
-        reqs = [Requirement.get(id=req.requirement_id).name for req in reqs_to_spec]
+        reqs = [Requirement.get(id=req.requirement_id) for req in reqs_to_spec]
         return {
             "id": data.id,
             "name": data.name,
             "transliterated": data.transliterated,
             "projects": [{"name": p.name, "desc": p.description} for p in projects],
-            "reqs": reqs,
+            "reqs": [{"name": req.name, "desc":req.description} for req in reqs],
         }
 
     except Speciality.DoesNotExist:
